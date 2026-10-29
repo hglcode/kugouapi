@@ -1,5 +1,5 @@
 {
-    "name": "kugou-api",
+    "name": "kugouapi",
     "version": "0.5.0",
     "description": "Unofficial KuGou music API client for TypeScript. Full endpoint catalog (270+), powered by @glcoding/httpclient (retry / circuit breaker / per-attempt timeout), works on Bun & Node.js 22.19+.",
     "type": "module",
@@ -43,7 +43,8 @@
         "smoke": "bun scripts/live-smoke.mjs",
         "check": "bun run format:check && bun run lint && bun run typecheck && bun test && bun run build",
         "prepublishOnly": "bun run check",
-        "docs:endpoints": "bun scripts/gen-endpoint-docs.mjs && prettier --write docs/ENDPOINTS.md"
+        "docs:endpoints": "bun scripts/gen-endpoint-docs.mjs && prettier --write docs/ENDPOINTS.md",
+        "prepare": "tsdown"
     },
     "devDependencies": {
         "@types/bun": "^1.4.4",
