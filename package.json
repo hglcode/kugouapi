@@ -52,7 +52,7 @@
         "oxlint": "^1.90.0",
         "oxlint-tsgolint": "^7.0.2005",
         "prettier": "^3.9.10",
-        "tsdown": "^0.23.3",
+        "tsdown": "^0.23.4",
         "typescript": "^7.0.2"
     },
     "dependencies": {
