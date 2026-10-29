@@ -1,5 +1,5 @@
 /**
- * HTTP 后端：基于 [@glcoding/httpclient](https://github.com/hglcode/httpclient)。
+ * HTTP 后端：基于 [@hglcode/httpclient](https://github.com/hglcode/httpclient)。
  *
  * 库自 0.5.0 起将其作为运行时依赖（git 源直接安装，无需发布 npm）：
  * - 重试：指数退避 + half/full jitter、遵循 Retry-After、幂等方法白名单
@@ -32,13 +32,13 @@
  * @module
  */
 
-import { createHttpClient, type HttpClient, type HttpClientOptions } from '@glcoding/httpclient';
+import { createHttpClient, type HttpClient, type HttpClientOptions } from '@hglcode/httpclient';
 
 import type { FetchLike } from '../types';
 
 /**
  * 任何提供标准 fetch 形状方法的对象即可注入
- * （`@glcoding/httpclient` 的 HttpClient / undici 包装器 / 自研客户端）。
+ * （`@hglcode/httpclient` 的 HttpClient / undici 包装器 / 自研客户端）。
  *
  * init 为标准 RequestInit 加 per-attempt `timeout` 扩展字段；
  * 仅实现标准 RequestInit 的客户端同样兼容（timeout 可选）。
@@ -89,4 +89,4 @@ export function wrapHttpClient(client: HttpClient | HttpClientLike): FetchLike {
 }
 
 // 类型再导出，统一公共类型面
-export type { HttpClient, HttpClientOptions } from '@glcoding/httpclient';
+export type { HttpClient, HttpClientOptions } from '@hglcode/httpclient';

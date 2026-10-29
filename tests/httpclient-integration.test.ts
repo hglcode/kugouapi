@@ -1,5 +1,5 @@
 /**
- * 真实 @glcoding/httpclient 集成测试（离线：stub 全局 fetch）。
+ * 真实 @hglcode/httpclient 集成测试（离线：stub 全局 fetch）。
  *
  * Bun 下 httpclient 走全局 fetch 等价拦截链（bun-compat），
  * 因此 stub globalThis.fetch 即可覆盖：默认链路、重试、

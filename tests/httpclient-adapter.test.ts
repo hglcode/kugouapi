@@ -4,7 +4,7 @@ import { wrapHttpClient } from '../src/adapters/httpclient';
 import type { HttpClientLike } from '../src/adapters/httpclient';
 import { KuGouClient } from '../src/client';
 
-/** 模拟 @glcoding/httpclient 形状的客户端：记录调用并返回可编程响应 */
+/** 模拟 @hglcode/httpclient 形状的客户端：记录调用并返回可编程响应 */
 class HttpClientMock implements HttpClientLike {
     readonly calls: { url: string; init: RequestInit }[] = [];
 

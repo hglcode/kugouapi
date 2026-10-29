@@ -1,7 +1,7 @@
 {
     "name": "kugouapi",
     "version": "0.5.0",
-    "description": "Unofficial KuGou music API client for TypeScript. Full endpoint catalog (270+), powered by @glcoding/httpclient (retry / circuit breaker / per-attempt timeout), works on Bun & Node.js 22.19+.",
+    "description": "Unofficial KuGou music API client for TypeScript. Full endpoint catalog (270+), powered by @hglcode/httpclient (retry / circuit breaker / per-attempt timeout), works on Bun & Node.js 26.13+.",
     "type": "module",
     "license": "MIT",
     "sideEffects": false,
@@ -52,13 +52,13 @@
         "oxlint": "^1.90.0",
         "oxlint-tsgolint": "^7.0.2005",
         "prettier": "^3.9.10",
-        "tsdown": "^0.23.3",
+        "tsdown": "^0.23.4",
         "typescript": "^7.0.2"
     },
     "dependencies": {
-        "@glcoding/httpclient": "git+https://github.com/hglcode/httpclient.git"
+        "@hglcode/httpclient": "git+https://github.com/hglcode/httpclient.git"
     },
     "trustedDependencies": [
-        "@glcoding/httpclient"
+        "@hglcode/httpclient"
     ]
 }

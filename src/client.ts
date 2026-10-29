@@ -7,7 +7,7 @@
  *   `request()` 作为通用逃生舱可调用任意端点
  * - registerDevice() / 登录类端点成功后自动维护会话凭证
  *   （dfid / mid / token / userid / vipType），后续请求自动携带；会话可导出恢复
- * - HTTP 层基于 @glcoding/httpclient（重试 / per-attempt 超时 / 熔断），
+ * - HTTP 层基于 @hglcode/httpclient（重试 / per-attempt 超时 / 熔断），
  *   实例可注入（options.httpClient），默认自动创建并由 close() 管理
  * - 签名、平台常量、加密均可定制，详见各模块
  *

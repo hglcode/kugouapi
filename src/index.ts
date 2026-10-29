@@ -19,10 +19,10 @@
 // 客户端
 export { KuGouClient } from './client';
 
-// HTTP 后端（@glcoding/httpclient 集成）
+// HTTP 后端（@hglcode/httpclient 集成）
 export { createKuGouHttpClient, wrapHttpClient } from './adapters/httpclient';
 export type { HttpClientLike, KuGouHttpClientOptions } from './adapters/httpclient';
-export type { HttpClient, HttpClientOptions } from '@glcoding/httpclient';
+export type { HttpClient, HttpClientOptions } from '@hglcode/httpclient';
 
 // 端点目录
 export { ENDPOINTS, ENDPOINT_IDS, ALL_ENDPOINTS, endpointId, endpointByModule } from './catalog';

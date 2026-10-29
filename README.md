@@ -1,21 +1,21 @@
 # kugou-api
 
-非官方酷狗音乐 API 的 TypeScript 客户端库。基于 [@glcoding/httpclient](https://github.com/hglcode/httpclient)（重试 / 熔断 / per-attempt 超时），Bun / Node.js 22.19+ 双运行时，tsdown 构建。
+非官方酷狗音乐 API 的 TypeScript 客户端库。基于 [@hglcode/httpclient](https://github.com/hglcode/httpclient)（重试 / 熔断 / per-attempt 超时），Bun / Node.js 26.13+ 双运行时，tsdown 构建。
 
 - **271 个端点目录**：覆盖参考实现 [KuGouMusicApi](https://github.com/MakcRe/KuGouMusicApi)（main\@5d6c9f7，v1.6.2）的全部 234 个功能模块（搜索 / 播放地址 / 歌词 / 歌单 / 用户 / 评论 / 登录 / 云盘 / 一起听 / 概念版……），`client.call(id, params)` 一致调用、id 自动补全
 - **内置会话**：注册 / 登录成功后 dfid / mid / token / userid / vip 信息自动携带，可导出恢复
 - **协议完备**：android / web / register 签名、trackercdn key、加密 POST（sessionCipher）、cloudlist、登录族（AES+RSA）、评论族、KRC 歌词解码等全部对齐参考实现
-- **生产级 HTTP 层**：@glcoding/httpclient 驱动——GET 幂等重试（Retry-After + 抖动）、per-attempt 超时、熔断器、可选限流与遥测；实例可注入，默认自动创建
+- **生产级 HTTP 层**：@hglcode/httpclient 驱动——GET 幂等重试（Retry-After + 抖动）、per-attempt 超时、熔断器、可选限流与遥测；实例可注入，默认自动创建
 - **可注入**：httpClient / fetch / logger / CryptoProvider 均可替换，测试友好（全部离线单测）
 
 ## 安装
 
 ```bash
 bun add kugou-api      # Bun
-npm add kugou-api      # Node.js ≥ 22.19
+npm add kugou-api      # Node.js ≥ 26.13
 ```
 
-> 依赖 `@glcoding/httpclient`（未发布 npm）。本打包内已附带其本地源码副本（`../httpclient`，`file:` 依赖，含已构建 `dist/`），`bun install` 直接可用；单独获取时改用 git 源 `bun add github:hglcode/httpclient`（仓库带 `prepare` 脚本以在安装时产出 `dist/`，本库已声明 `trustedDependencies`）。
+> 依赖 `@hglcode/httpclient`（未发布 npm）。本打包内已附带其本地源码副本（`../httpclient`，`file:` 依赖，含已构建 `dist/`），`bun install` 直接可用；单独获取时改用 git 源 `bun add github:hglcode/httpclient`（仓库带 `prepare` 脚本以在安装时产出 `dist/`，本库已声明 `trustedDependencies`）。
 
 ## 快速开始
 
@@ -81,9 +81,9 @@ const client = new KuGouClient({
 await client.close(); // 优雅关闭内部创建的 HTTP 实例（进程退出前）
 ```
 
-## HTTP 层（@glcoding/httpclient）
+## HTTP 层（@hglcode/httpclient）
 
-0.5.0 起库以 [@glcoding/httpclient](https://github.com/hglcode/httpclient)（[gitcode 镜像](https://gitcode.com/hglcode/httpclient)）作为运行时 HTTP 后端，默认自动创建并附带酷狗预设：`cookies: false`（网关会话走查询参数，避免 WAF Set-Cookie 自动回传）、`throwOnHttpError: false`（fetch 语义，2xx 判断由本库统一完成）。带来的能力：GET 幂等重试（指数退避 + 抖动 + Retry-After）、per-attempt 超时（每次尝试独立计时）、滑动窗口熔断（5xx 比例过高快速失败）、Bun 原生支持。
+0.5.0 起库以 [@hglcode/httpclient](https://github.com/hglcode/httpclient)（[gitcode 镜像](https://gitcode.com/hglcode/httpclient)）作为运行时 HTTP 后端，默认自动创建并附带酷狗预设：`cookies: false`（网关会话走查询参数，避免 WAF Set-Cookie 自动回传）、`throwOnHttpError: false`（fetch 语义，2xx 判断由本库统一完成）。带来的能力：GET 幂等重试（指数退避 + 抖动 + Retry-After）、per-attempt 超时（每次尝试独立计时）、滑动窗口熔断（5xx 比例过高快速失败）、Bun 原生支持。
 
 需要限流 / 遥测 / 连接池调优时，先建实例再注入：
 
@@ -143,7 +143,7 @@ bun run check          # 全部门禁（format + lint + typecheck + test + build
 
 ### 质量门禁
 
-CI 强制执行（见 `.github/workflows/ci.yml`，含 Node 22.19 / 24 兼容矩阵）：
+CI 强制执行（见 `.github/workflows/ci.yml`，含 Node 26.13 / 24 兼容矩阵）：
 
 - **lint**：oxlint + tsgolint 类型感知规则，`no-floating-promises` / `no-misused-promises` / `await-thenable` 开启为 error。未使用参数约定 `_` 前缀；目录协议层有意保留参考实现的宽松字符串转换（`no-base-to-string` / `restrict-template-expressions` 关闭）
 - **format**：prettier（printWidth 100 / 4 空格缩进 / 单引号 / LF），`docs/ENDPOINTS.md` 由 `docs:endpoints` 生成后自动格式化
@@ -151,8 +151,8 @@ CI 强制执行（见 `.github/workflows/ci.yml`，含 Node 22.19 / 24 兼容矩
 
 ## 与 0.4 版的差异（Breaking）
 
-- **HTTP 后端替换**：运行时依赖 [@glcoding/httpclient](https://github.com/hglcode/httpclient)（git 源，未发布 npm），全局 fetch 默认路径替换为自动创建的客户端实例（cookies 关闭 / GET 重试 1 次 / 超时 10s / 熔断开启）；重试与超时语义升级为 per-attempt（此前为单 signal 覆盖含重试的全过程）
-- **Node 最低版本 18 → 22.19**（httpclient 依赖 undici\@8）；Bun 1.x 不受影响
+- **HTTP 后端替换**：运行时依赖 [@hglcode/httpclient](https://github.com/hglcode/httpclient)（git 源，未发布 npm），全局 fetch 默认路径替换为自动创建的客户端实例（cookies 关闭 / GET 重试 1 次 / 超时 10s / 熔断开启）；重试与超时语义升级为 per-attempt（此前为单 signal 覆盖含重试的全过程）
+- **Node 最低版本 18 → 26.13**（httpclient 依赖 undici\@8）；Bun 1.x 不受影响
 - 新增 `createKuGouHttpClient()` 预设工厂与 `KuGouClient.close()`（优雅关闭内部实例）；`options.httpClient` 注入实例，`options.fetch` 保留为测试 / 特殊用途
 - 构建目标 node18 → node22
 

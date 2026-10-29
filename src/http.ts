@@ -2,7 +2,7 @@
  * 极简 HTTP 分发层：URL 构建、超时、GET 重试。
  *
  * 两条路径：
- * - httpClient（默认）：@glcoding/httpclient 实例，重试 / per-attempt 超时 /
+ * - httpClient（默认）：@hglcode/httpclient 实例，重试 / per-attempt 超时 /
  *   熔断由其全权管理，本层不重复实现
  * - fetch（注入）：任意 FetchLike（测试 mock / 代理），沿用内置
  *   单 signal 超时 + GET 重试退避
