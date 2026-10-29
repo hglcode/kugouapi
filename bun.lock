@@ -5,7 +5,7 @@
     "": {
       "name": "kugou-api",
       "dependencies": {
-        "@glcoding/httpclient": "git+https://github.com/hglcode/httpclient.git",
+        "@hglcode/httpclient": "git+https://github.com/hglcode/httpclient.git",
       },
       "devDependencies": {
         "@types/bun": "^1.4.4",
@@ -19,10 +19,10 @@
     },
   },
   "trustedDependencies": [
-    "@glcoding/httpclient",
+    "@hglcode/httpclient",
   ],
   "packages": {
-    "@glcoding/httpclient": ["@glcoding/httpclient@github:hglcode/httpclient#6270bcb", { "dependencies": { "tough-cookie": "^6.0.2", "undici": "^8.12.3" }, "hasInstallScript": true }, "hglcode-httpclient-6270bcb", "sha512-ChN3wY73dc8JdJAkSJtJ+67fkSvSSX4L1akTLMgvOh4mMy1YTpJ8TTChJBKYHejCQCrC7D0tA9QVRtolsO9srg=="],
+    "@hglcode/httpclient": ["@hglcode/httpclient@github:hglcode/httpclient#1fe043f", { "dependencies": { "tough-cookie": "^6.0.2", "undici": "^8.12.3" }, "hasInstallScript": true }, "hglcode-httpclient-1fe043f", "sha512-rxcm5noIUZUwzc6QA7w+zyTa5S+KsmURU+7w4I5gOUyzo/Gi/zGUfkaeUpl6KTxkwNKq4hQC792AGzrlV3ok9w=="],
 
     "@oxc-project/types": ["@oxc-project/types@0.155.0", "https://registry.npmmirror.com/@oxc-project/types/-/types-0.155.0.tgz", {}, "sha512-SeE8JPwW1xs1tHeNycjUtUBdhorRa8o4jlvjwk49R7/Z291i+4DQa7JJIgOm/TaYQZx+QrPQbVJ/9c8dMIZN8Q=="],
 

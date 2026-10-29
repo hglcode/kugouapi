@@ -1,10 +1,10 @@
 /**
- * kugou-api + @glcoding/httpclient 集成示例。
+ * kugou-api + @hglcode/httpclient 集成示例。
  *
- * 0.5.0 起库以 @glcoding/httpclient 作为运行时 HTTP 后端（git 源依赖）：
+ * 0.5.0 起库以 @hglcode/httpclient 作为运行时 HTTP 后端（git 源依赖）：
  * 默认自动创建（cookies 关闭 / GET 重试 1 次 / 超时 10s / 熔断开启）。
  * 运行：bun examples/httpclient.ts [关键词]
- * Node >= 22.19（undici@8）；Bun 1.x 原生支持。
+ * Node >= 26.13（undici@8）；Bun 1.x 原生支持。
  */
 
 import { KuGouClient, createKuGouHttpClient, randomDevice } from '../src/index.js';

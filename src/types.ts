@@ -190,7 +190,7 @@ export interface ClientOptions {
     logger?: Logger;
     /** 注入自定义 fetch（测试 mock / 特殊用途）；设置后不创建默认 HTTP 客户端 */
     fetch?: FetchLike;
-    /** 注入结构化 HTTP 客户端（@glcoding/httpclient 的 HttpClient，或等价的
+    /** 注入结构化 HTTP 客户端（@hglcode/httpclient 的 HttpClient，或等价的
      * fetch(url, init) 形状实现）；未提供且未提供 fetch 时自动创建
      * （cookies 关闭 / GET 重试 1 次 / 超时 10s） */
     httpClient?: HttpClientLike | HttpClient;
