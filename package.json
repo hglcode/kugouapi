@@ -1,0 +1,63 @@
+{
+    "name": "kugou-api",
+    "version": "0.5.0",
+    "description": "Unofficial KuGou music API client for TypeScript. Full endpoint catalog (270+), powered by @glcoding/httpclient (retry / circuit breaker / per-attempt timeout), works on Bun & Node.js 22.19+.",
+    "type": "module",
+    "license": "MIT",
+    "sideEffects": false,
+    "keywords": [
+        "kugou",
+        "kugou-api",
+        "music",
+        "api-client",
+        "typescript",
+        "bun",
+        "kugou-music-api",
+        "zero-dependency"
+    ],
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "engines": {
+        "node": ">=26.13.0"
+    },
+    "scripts": {
+        "build": "tsdown",
+        "test": "bun test",
+        "typecheck": "tsc --noEmit",
+        "lint": "oxlint --type-aware",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "verify:node": "node scripts/node-compat.mjs",
+        "smoke": "bun scripts/live-smoke.mjs",
+        "check": "bun run format:check && bun run lint && bun run typecheck && bun test && bun run build",
+        "prepublishOnly": "bun run check",
+        "docs:endpoints": "bun scripts/gen-endpoint-docs.mjs && prettier --write docs/ENDPOINTS.md"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.4.4",
+        "@types/node": "^26.6.6",
+        "oxlint": "^1.90.0",
+        "oxlint-tsgolint": "^7.0.2005",
+        "prettier": "^3.9.10",
+        "tsdown": "^0.23.3",
+        "typescript": "^7.0.2"
+    },
+    "dependencies": {
+        "@glcoding/httpclient": "git+https://github.com/hglcode/httpclient.git"
+    },
+    "trustedDependencies": [
+        "@glcoding/httpclient"
+    ]
+}

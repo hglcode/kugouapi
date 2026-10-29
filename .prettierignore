@@ -1,0 +1,7 @@
+# 依赖与构建产物
+node_modules/
+dist/
+coverage/
+
+# 锁文件（非源码）
+bun.lock
